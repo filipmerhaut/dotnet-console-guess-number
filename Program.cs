@@ -8,31 +8,35 @@ class Program
     {
         Console.WriteLine("Guess Number 0-100");
         int secretNum = new Random().Next(0,100);
-        int guessNum;
-        Console.WriteLine("Secret tip {0}", secretNum);
+        int guessNum = -1;
+        Console.WriteLine("Debug info: {0}", secretNum);
         while (true)
         {
             bool validInput = false;
             while (!validInput)
             {
                 validInput = int.TryParse(Console.ReadLine(), out guessNum);
-                if (guessNum > secretNum)
+                if (!validInput)
                 {
-                    Console.WriteLine("It's less");
+                    Console.WriteLine("Invalid input, please enter integer");
                 }
-                else if (guessNum < secretNum)
-                {
-                    Console.WriteLine("It's more");
-                }
-                else if (guessNum == secretNum)
-                {
-                    Console.WriteLine("You won!");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Wrong input");
-                }
+            }
+            if (guessNum > secretNum)
+            {
+                Console.WriteLine("It's less");
+            }
+            else if (guessNum < secretNum)
+            {
+                Console.WriteLine("It's more");
+            }
+            else if (guessNum == secretNum)
+            {
+                Console.WriteLine("You won!");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Wrong input");
             }
         }
 
