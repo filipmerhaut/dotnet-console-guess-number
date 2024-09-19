@@ -1,31 +1,15 @@
 ﻿using System;
-namespace dotnet_console_guess_number;
+using GameManager;
 
-class Program
+namespace guessing_game
 {
-    static void Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("Guess Number 0-100");
-        int secretNum = new Random().Next(0,100);
-        int guessNum = -1;        
-        while (true)
+        static void Main(string[] args)
         {
-            bool validInput = false;
-            while (!validInput)          
-                if (!(validInput = int.TryParse(Console.ReadLine(), out guessNum)))
-                    Console.WriteLine("Invalid input, please enter integer");
-            if (guessNum > secretNum)
-                Console.WriteLine("It's less");
-            else if (guessNum < secretNum)
-                Console.WriteLine("It's more");
-            else if (guessNum == secretNum)
-            {
-                Console.WriteLine("You won!");
-                return;
-            }
-            else
-                Console.WriteLine("Unknown condition");
+            Console.WriteLine("Guess Number 0-100");
+            GameManager.PlayGuessingGame();
         }
-
     }
 }
+
